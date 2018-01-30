@@ -107,19 +107,32 @@ html, body{
     background-size: cover; 
   }
   &-2, &-3{
+    position: relative;
     .subtitle{
-      margin: 22rem 0 2rem 0;
+      margin-top: 2.5rem;
+      margin-left: 16rem;
+      position: absolute;
     }
     .title{
-      margin-bottom: 6rem;
+      margin-top: 2rem;
+      margin-left: 13rem;
+      position: absolute;
     }
   }
-  &-4, &-5{
+  &-4{
     .subtitle{
       margin: 24rem 0 1rem 0;
     }
     .title{
       margin: 1rem 0 6rem 0;
+    }
+  }
+  &-5{
+    .title{
+      margin: 22rem 0 1rem 0;
+    }
+    .subtitle{
+      margin: 1rem 0 4rem 0;
     }
   }
   &-6{
@@ -135,21 +148,50 @@ html, body{
     margin-top: 6rem;
     .title{
       margin-bottom: 3rem;
+      position: relative;
+      span{
+        color: #f3ef99;
+        position: absolute;
+        right: 6.5rem;
+        top: -.5rem;
+        font-size: 3rem;
+      }
     }
     .subtitle{
       margin: 1rem 0 2rem 0;
     }
   }
   &-8{
-    margin-top: 3.5rem;
+    margin-top: 2rem;
     .title{
       margin: 1rem 0;
     }
+    .huoche{
+      position: relative;
+      .dizhi{
+        color: #fff;
+        font-weight: bold;
+        position: absolute;
+        top: 3.4rem;
+        left: 9rem;
+        font-size: .9rem;
+        span{
+          font-size: .5rem;
+        }
+      }
+      .name{
+        font-weight: bold;
+        font-size: .8rem;
+        position: absolute;
+        bottom: 4.5rem;
+        left: 4rem;
+      }
+    }
   }
   &-9{
-    margin-top: 3.5rem;
+    margin-top: 2rem;
     .zhongjian{
-      height: 17rem;
+      height: 22rem;
       width: 13rem;
       position: relative;
       margin: auto;
@@ -157,11 +199,14 @@ html, body{
     }
     .biaoti, .xiaozi{
       position: absolute;
-      top: 15px;
+      top: 25px;
     }
     .xiaozi{
-      top: 3.5rem;
+      top: 4rem;
       right: 1.5rem;
+      color: #ca8641;
+      text-orientation: upright;
+      writing-mode: vertical-lr;
     }
     .fengge{
       height: 100%;
