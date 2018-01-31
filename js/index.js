@@ -68,16 +68,30 @@ $('#sheng').on('change', function() {
   }
 })
 
+$('#didian').on('change', function() {
+  $('.page-8 .dizhi span').text($('#didian').val());
+})
+
+$('#name').on('change', function() {
+  $('.page-8 .huoche .name').text($('#name').val());
+})
+
 // 领取
 $('#lingqu').on('click', function() {
-  if(userobj.price == 0) alert('获得免费火车票！请去现场领取')
-  else alert('您的火车票还没砍至0元，快邀请小红包来帮忙吧！');
+  // if(userobj.price == 0) 
+  alert('请前往湖南省衡阳市华耀碧桂园十里江湾营销中心领取现金红包');
+  // else alert('您的火车票还没砍至0元，快邀请小红包来帮忙吧！');
 });
 
 $('#kanjia, .page-10 .banmian .guan').on('click', function() {
   $('.page-10 .motai').toggle()
 })
 
+// 设置距离时间
+var nowTime = new Date();
+var chunjie = new Date(2018, 02, 16);
+// var tianshu = Math.floor(chunjie - nowTime/(24*3600*1000));
+$('.page-7 span').text(Math.floor((chunjie.getTime() - nowTime.getTime())/(24*3600*1000)))
 
 
 
