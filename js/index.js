@@ -88,9 +88,10 @@ $('#kanjia, .page-10 .banmian .guan').on('click', function() {
 })
 
 // 设置距离时间
-var nowTime = new Date("2018/1/31 8:50:01");
+var nowTime = new Date();
 var chunjie = new Date("2018/2/17 00:00:00");
-var tianshu = Math.floor(chunjie - nowTime/86400000);
+var dateDiff = chunjie - nowTime;
+var tianshu = Math.floor(dateDiff / (24 * 3600 * 1000));
 $('.page-7 span').text(tianshu);
 
 
