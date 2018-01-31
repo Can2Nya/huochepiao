@@ -153,7 +153,7 @@
                 <br>
                 DIDIAN
               </div>
-              <div class="name">xxx</div>
+              <div class="name" style="display: none;">xxx</div>
             </div>
             <div class="title js-animate animated" data-animate="fadeInUp">
               <img src="../images/08/biaoti.png" alt="" width="60%">
@@ -269,6 +269,7 @@
       // 火车票那页不允许滑动
       if(e.cur == 8) $.fn.fullpage.stop();
       if(e.cur == 9) $.fn.fullpage.start();
+      if(e.cur == 10) $.fn.fullpage.stop();
     }
   });
 </script>
