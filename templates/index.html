@@ -115,7 +115,7 @@
         </div>
         <div class="page page-6-h">
           <div class="item item-6-h js-animate animated" data-animate="fadeIn">
-            <div class="js-animate animated" data-animate="fadeInUp">
+            <div class="js-animate animated" data-animate="">
                 <img src="../images/06-h/biaoti.png" alt="" width="100%">
             </div>
             <div class="js-animate animated" data-animate="fadeInUp" style="margin-bottom: 20px;">
@@ -134,7 +134,7 @@
             <div class="title js-animate animated" data-animate="fadeInUp">
             <!-- <img src="../images/07/biaoti.png" alt="" width="70%">
             <div>10</div> -->
-            距离过年还有<span>10</span>天
+            距离过年还有 <span>10</span> 天
             </div>
             <div class="hr">
               <img src="../images/gongyong/分割线.png" alt="" width="70%">
@@ -149,15 +149,26 @@
             <div class="huoche">
               <!-- <img src="../images/08/HENGYANG.png" alt="" width="95%"> -->
               <div class="dizhi">
-                地点<br><span>DIDIAN</span>
+                远方<br><span>DIDIAN</span>
               </div>
-              <div class="name">某某某</div>
+              <div class="name">xxx</div>
             </div>
             <div class="title js-animate animated" data-animate="fadeInUp">
               <img src="../images/08/biaoti.png" alt="" width="60%">
             </div>
             <div class="input">
-              <input type="text" name="name" id="name" placeholder="请填写姓名">
+              <input type="text" name="name" id="name" placeholder="请填写姓名" required><br><br>
+              <select id="sheng">
+                  <option>请选择</option>
+                  
+              </select>
+              <select id="didian">
+                  <option>请选择</option>
+                  
+              </select>
+              <!-- <input type="text" name="didian" id="didian" placeholder="请填写出发地" required><br><br> -->
+              <!-- <button id="tijiao" class="js-animate animated infinite" data-animate="fadeInDown">v</button> -->
+              <img id="tijiao" src="../images/08/next.png" alt="" width="60%">
             </div>
           </div>
         </div>
@@ -180,7 +191,7 @@
               </div>
               <div class="xiaozi js-animate animated" data-animate="fadeInRight">
                 <!-- <img src="../images/09/xiaozi.png" alt="" width="60%"> -->
-                距离3733公里 有787位与您同行
+                距离<span class="one">10</span> 公里 &nbsp;有 <span class="two">222</span> 位与您同行
               </div>
             </div>
             <div>
@@ -206,7 +217,7 @@
               <div class="process-bai"></div>
               <div class="process-huang"></div>
               <div class="process-kuang" style="margin-left:25%">
-                <span>&nbsp;&nbsp;现价240元</span>
+                <span class="one">&nbsp;现价240元</span>
                 <img src="../images/10/kuang.png" alt="" width="60%"><br>
                 <img src="../images/10/quan.png" alt="" width="20%">
               </div>
@@ -216,11 +227,19 @@
               </div>
             </div>
             <div class="button js-animate animated" data-animate="fadeInUp">
-              <img src="../images/10/按钮1.png" alt="" width="60%">
-              <img src="../images/10/按钮2.png" alt="" width="60%">
+              <img id="lingqu" src="../images/10/按钮1.png" alt="" width="60%">
+              <img id="kanjia" src="../images/10/按钮2.png" alt="" width="60%">
             </div>
             <div class="logo-s js-animate animated" data-animate="fadeInUp">
               <img src="../images/10/xiamian.png" alt="" width="80%">
+            </div>
+            <div class="motai">
+              <div class="banmian">
+                <p>请将您的专属砍价链接复制到微信朋友圈</p>
+                <!-- <input type="text" value=""> -->
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <p class="guan">关闭</p>
+              </div>
             </div>
           </div>
         </div>
@@ -229,6 +248,7 @@
 </div>
 <script src="../js/zepto.min.js"></script>
 <script src="../js/zepto.fullpage.js"></script>
+<script src="../js/index.js"></script>
 <script>
   $('.wp-inner').fullpage({
     duration: 100,
@@ -243,6 +263,10 @@
       $('.page').eq(e.cur).find('.js-animate').each(function () {
           $(this).addClass($(this).data('animate')).show();
       });
+      // console.log(e.cur)
+      // 火车票那页不允许滑动
+      if(e.cur == 8) $.fn.fullpage.stop();
+      if(e.cur == 9) $.fn.fullpage.start();
     }
   });
 </script>
