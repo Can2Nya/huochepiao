@@ -11,6 +11,8 @@ html {
 .item-10 {
   padding-top: 2rem;
   position: relative;
+  height: 100%;
+  box-sizing: border-box;
 }
 .item-10 .logo,
 .item-10 .huochepiao,
@@ -73,10 +75,19 @@ html {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
+  background-image: url(../images/gongyong/share.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .item-10 .motai .banmian {
   width: 80%;
   padding: 20px;
   background: #fff;
   margin: 10rem auto;
+}
+.item-10 .motai .guan {
+  height: 100%;
+  width: 100%;
 }
