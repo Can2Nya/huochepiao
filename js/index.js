@@ -85,7 +85,7 @@ $('#lingqu').on('click', function() {
 
 $('#kanjia').on('click', function() {
   // $('.page-10 .motai').toggle()
-  var url = location.host + userobj.share_url;
+  var url = 'http://' + location.host + userobj.share_url;
   location.href = url;
 })
 
