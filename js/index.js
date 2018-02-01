@@ -24,8 +24,8 @@ $('#tijiao').on('click', function(){
       $('.page-10 .banmian textarea').val(data.share_url);
 
       //设置进度条
-      $('.process-kuang').css('margin-left', (data.price*1.0 / data.distance)*100 - 5 + '%' );
-      $('.process-huang').css('width', (data.price*1.0 / data.distance)*100 + '%');
+      $('.process-kuang').css('margin-left', 100 - (data.price*1.0 / data.distance)*100 - 5 + '%' );
+      $('.process-huang').css('width', 100 - (data.price*1.0 / data.distance)*100 + '%');
       $.fn.fullpage.moveNext(true);
       userobj = data;
     },
