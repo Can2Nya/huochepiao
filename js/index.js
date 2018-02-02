@@ -83,10 +83,10 @@ $('#lingqu').on('click', function() {
   // else alert('您的火车票还没砍至0元，快邀请小红包来帮忙吧！');
 });
 
-$('#kanjia').on('click', function() {
-  // $('.page-10 .motai').toggle()
-  var url = 'http://' + location.host + userobj.share_url;
-  location.href = url;
+$('#kanjia, .guan').on('click', function() {
+  $('.page-10 .motai').toggle()
+  // var url = 'http://' + location.host + userobj.share_url;
+  // location.href = url;
 })
 
 // 设置距离时间
