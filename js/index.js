@@ -2,6 +2,8 @@
 var sign = {};
 // 获得全部城市
 var cityobj = null;
+// 分享数据
+var shareData = {};
 
 // 获得距离啥的
 var userobj = null;
@@ -10,6 +12,12 @@ $('#tijiao').on('click', function(){
     alert('请填写信息');
     return ;
   }
+  // 存储信息
+  saveUser({
+    didian: $('#didian').val(),
+    sheng: $('#sheng').val(),
+    name: $('#name').val()
+  })
   $.ajax({
     type: 'POST',
     url: 'http://william-tu.cn/user',
@@ -26,7 +34,7 @@ $('#tijiao').on('click', function(){
       // this.append(data.project.html)
       $('.page-9 .one').text(data.distance);
       $('.page-9 .two').text(data.all_user);
-      $('.page-10 .one').text('现价' + data.price + '元');
+      $('.page-10 .one').text(data.price + '公里');
       $('.page-10 .banmian textarea').val(data.share_url);
 
       //设置进度条
@@ -51,7 +59,7 @@ $.ajax({
   contentType: "application/x-www-form-urlencoded; charset=utf-8",
   success: function(data){
     cityobj = data.provinces;
-    console.log(cityobj);
+    // console.log(cityobj);
     // for(var i of cityobj){
     //   $('#sheng')
     // }
@@ -74,9 +82,9 @@ $('#sheng').on('change', function() {
   }
 })
 
-$('#didian').on('change', function() {
-  $('.page-8 .dizhi span').text($('#didian').val());
-})
+// $('#didian, #sheng').on('change', function() {
+//   $('.page-8 .dizhi span').text($('#didian').val());
+// })
 
 $('#name').on('change', function() {
   $('.page-8 .huoche .name').text($('#name').val());
@@ -95,15 +103,15 @@ $('#kanjia').on('click', function() {
   $('.page-10 .motai').toggle();
   // var url = 'http://' + location.host + userobj.share_url;
   // location.href = url;
-  var shareData = {
+  shareData = {
     appId: sign.app_id,
     signature: sign.sign,
     // timestamp: sign.timestamp,
     // nonceStr: sign.nonceStr,
-    title: '衡阳市华耀碧桂园十里江湾营销中心',
-    desc: '衡阳市华耀碧桂园十里江湾营销中心邀您领取0元火车票',
+    // title: '衡阳市华耀碧桂园十里江湾营销中心',
+    // desc: '衡阳市华耀碧桂园十里江湾营销中心邀您领取0元火车票',
     link: 'http://' + location.host + userobj.share_url,
-    imgUrl: 'http://' + location.host + '/images/01/01.jpg',
+    // imgUrl: 'http://' + location.host + '/images/01/01.jpg',
   };
   wechat.wechatShare(shareData);
 })
@@ -121,32 +129,24 @@ $('.page-7 span').text(tianshu);
 
 // 微信分享
 var wechat = {
-  // 获取长度为len的随机字符串
-  getRandomString: function (len) {
-    len = len || 32;
-    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
-    var maxPos = $chars.length;
-    var pwd = '';
-    for (i = 0; i < len; i++) {
-        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-    }
-    return pwd;
-  },
-  wechatConfig: function (config) {
-    wx.config({
-        debug: false,
-        appId: config.appId,
-        timestamp: config.timestamp,
-        nonceStr: config.nonceStr,
-        signature: config.signature,
-        jsApiList: config.jsApiList
-    });
-  },
+  // wechatConfig: function (config) {
+  //   wx.config({
+  //       debug: false,
+  //       appId: config.appId,
+  //       timestamp: config.timestamp,
+  //       nonceStr: config.nonceStr,
+  //       signature: config.signature,
+  //       jsApiList: config.jsApiList
+  //   });
+  // },
   wechatShare: function ($shareData) {
     var _default = {   
         debug: false,
         timestamp: timestamp,
         nonceStr: random_str,
+        title: '碧桂园助力“携爱回家”',
+        desc: '参与h5，好友助力赢取免费回家车票',
+        imgUrl: 'http://' + location.host + '/images/gongyong/share2.jpg',
         jsApiList: [
             'checkJsApi',
             'onMenuShareTimeline',
@@ -157,15 +157,8 @@ var wechat = {
     };
 
     var config = $.extend(_default, $shareData);
-
-    // var appId = config.appId;
-    // var appSecret = config.appSecret;
-    // var accessToken = config.accessToken;
-    // var ticket = config.ticket;
-    // var signature = config.signature;
-
     wx.config({
-      debug: true,
+      debug: false,
       appId: config.appId,
       timestamp: config.timestamp,
       nonceStr: config.nonceStr,
@@ -173,10 +166,10 @@ var wechat = {
       jsApiList: config.jsApiList
     });
     wx.ready(function () {
-      wx.onMenuShareAppMessage($shareData);
-      wx.onMenuShareTimeline($shareData);
-      wx.onMenuShareQQ($shareData);
-      wx.onMenuShareWeibo($shareData);
+      wx.onMenuShareAppMessage(config);
+      wx.onMenuShareTimeline(config);
+      wx.onMenuShareQQ(config);
+      wx.onMenuShareWeibo(config);
     });
   }
 }
@@ -201,11 +194,33 @@ $.ajax({
     // sign.app_id = data.app_id;
     // sign.sign = data.sign;
     sign = data
+    shareData = {
+      appId: sign.app_id,
+      signature: sign.sign,
+      // timestamp: timestamp,
+      // nonceStr: random_str,
+      // title: '碧桂园助力“携爱回家”',
+      // desc: '参与h5，好友助力赢取免费回家车票',
+      link: 'http://' + location.host,
+      
+    };
+    wechat.wechatShare(shareData);
   },
   error: function(data){
     alert('网络状况不好，请刷新重试');
   },
-})
+});
 
+// 本地存储
+
+function saveUser(data) {
+  localStorage.name = data.name;
+  localStorage.didian = data.didian;
+  localStorage.sheng = data.sheng;
+}
+function loadUser() {
+  if(localStorage.name) return true;
+  else return false;
+}
 
 
